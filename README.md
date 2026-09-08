@@ -47,23 +47,50 @@ Demonstrates relational schema design, primary/foreign keys, joins, aggregation,
 - Business KPI calculation from raw transactional data
 
 ---
-## 📈 **Sample Data Results**
-
-The repo currently ships with 15 sample customers, 5 tailors, and 15 orders. Based on that sample data:
-
+## SQL Analytics (9 queries, 5 areas)
+ 
+**1. Revenue Analysis** — Monthly revenue (via `STR_TO_DATE`, grouped by month) and revenue by payment method.
+ 
+**2. Tailor Performance** — orders, order value, completion rate per tailor:
+ 
+| Tailor | Orders | Order Value | Completed | Completion Rate |
+|---|---:|---:|---:|---:|
+| Nikshita | 3 | ₹9,500 | 1 | 33.33% |
+| Anamika | 3 | ₹8,300 | 2 | 66.67% |
+| Ahalya | 3 | ₹6,550 | 3 | 100.00% |
+| Kesha | 3 | ₹4,000 | 2 | 66.67% |
+| Ganga | 3 | ₹2,370 | 1 | 33.33% |
+ 
+**3. Operational Insights** — Overdue pending orders (6 orders, ₹11,470 total, based on 2024 sample deadlines) and garment analysis (order count, value, fabric requirements).
+ 
+**4. Customer Analytics** — High-value customers (`HAVING total_spent > 1000`) and geographic distribution of completed orders by address.
+ 
+**5. Business Health Metrics**
+ 
 | Metric | Value |
-|--------|-------|
-| **Total Revenue** | ₹30,420 |
-| **Completion Rate** | 60% (9 of 15 orders) |
-| **Avg Order Value** | ₹2,028 |
-| **Customers in sample data** | 15 |
-
-### **Observations from the Sample Data**
-- 🏆 **Best completion record**: Ahalya (tailor id 1001) — 3 orders, all completed
-- 💰 **Largest single order**: ₹7,800, dated September 2024
-- 📍 **Top location by revenue**: Marol (tied to that same ₹7,800 order)
-- ⚠️ **Overdue orders**: 6 PENDING orders past their deadline, ₹11,470 combined value at risk
-
+|---|---:|
+| Customers | 15 |
+| Orders | 15 |
+| Completed orders | 9 |
+| Pending orders | 6 |
+| Total order value | ₹30,420 |
+| Completed order value | ₹18,950 |
+| Average order value | ₹2,028 |
+| Completion rate | 60% |
+ 
+Order status distribution: COMPLETED 9 orders (60%, ₹18,950), PENDING 6 orders (40%, ₹11,470).
+ 
+---
+ 
+## SQL Techniques Used
+ 
+- Aggregation: `COUNT()`, `SUM()`, `AVG()`, `MAX()`
+- Conditional aggregation (`CASE` + `SUM`)
+- Date conversion: `STR_TO_DATE(deadline, '%d-%m-%y')`
+- Date formatting: `DATE_FORMAT(..., '%Y-%m')`
+- Filtering aggregates: `HAVING total_spent > 1000`
+- Multi-table joins across customers, orders, tailors, garments, and payments
+---
 ---
 
 ## 🎨 **Database Design**
