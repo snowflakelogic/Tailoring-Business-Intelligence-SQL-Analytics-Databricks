@@ -120,7 +120,7 @@ mysql -u root -p tailor < analytics/business_intelligence.sql
 
 *(Adjust the paths above to match how the SQL files are actually organized in the repo. The database is `tailor` — `tailor_dbms`, referenced in an earlier draft of this README, doesn't exist in the schema.)*
 
-### **Sample Query Output**
+### **Sample Query Output - code block**
 ```
 +----------+--------------+------------------+
 | month    | total_orders | monthly_revenue  |
