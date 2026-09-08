@@ -1,11 +1,11 @@
-# 🧵 Tailoring Enterprise Business Intelligence & Data Warehousing System 
-## SQL Analytics - DBMS & Data Warehouse Solution
+# 🧵 Tailoring Business — DBMS & Data Warehouse Project
+## SQL Project - Relational Database + Star Schema Data Warehouse
 ---
 ![ER Diagram](Tailoring_Management_Database.drawio.png)
 
 ## 🏗️ **Data Architecture & Schema Design**
 
-### **Star Schema Implementation**
+### **Star Schema Design**
 ```
                     dim_customer
                 (customer_key,...)
@@ -28,41 +28,46 @@ dim_payment ---->   fact_orders   <---- dim_garment
 
 ```
 
-> **Enterprise-grade Business Intelligence solution showcasing advanced SQL, dimensional modeling, and data warehousing expertise for tailoring business analytics.**
+> A SQL project demonstrating relational (OLTP) database design for a small tailoring business, alongside a star-schema data warehouse design for analytical reporting.
+
+**Note:** the warehouse schema above (`fact_orders` and its dimension tables) is defined but not yet populated — there's no ETL script in this repo that loads data from the OLTP tables into it. The analytics queries currently run directly against the OLTP tables, not this star schema. Populating the warehouse and re-pointing the queries at it is a planned next step.
 
 ---
 
-## 🎯 **Business Intelligence Objectives**
+## 🎯 **Project Objectives**
 
-**Problem**: Traditional tailoring businesses lack data-driven decision making capabilities  
-**Solution**: Complete BI ecosystem with OLTP operations + OLAP analytics  
-**Impact**: 60% improvement in order completion tracking, revenue insights, and performance KPIs
+**Problem**: Small tailoring businesses often track orders and payments manually, with no reporting layer.
+**Solution**: A normalized operational schema plus a set of SQL analytics queries surfacing revenue, tailor performance, and order-risk insights.
 
-### **Core BI Competencies Demonstrated**
-- **Dimensional Modeling** • Star Schema Design • **ETL Processes**
-- **Advanced SQL Analytics** • Performance Optimization • **Business Metrics**
-- **Data Warehousing** • OLTP/OLAP Architecture • **Predictive Insights**
-
----
-## 📈 **Business Intelligence Results**
-
-### **Key Performance Indicators**
-| Metric | Value | Insight |
-|--------|-------|---------|
-| **Total Revenue** | ₹30,420 | Strong business performance |
-| **Completion Rate** | 60% | Process optimization opportunity |
-| **Avg Order Value** | ₹2,028 | Premium pricing strategy working |
-| **Customer Retention** | 15 active customers | Geographic expansion potential |
-
-### **Analytical Insights**
-- 🏆 **Top Performer**: Ahalya (100% completion rate)
-- 💰 **Revenue Peak**: September 2024 (₹7,800 single order)
-- 📍 **Best Market**: Marol area (₹7,800 total revenue)
-- ⚠️ **Risk Alert**: 6 orders overdue (₹11,470 revenue at risk)
+### **Concepts Practiced**
+- Relational schema design & normalization
+- Star schema / dimensional modeling (design only — not yet loaded)
+- Aggregate SQL analytics (GROUP BY, JOINs, CASE-based metrics)
+- Business KPI calculation from raw transactional data
 
 ---
+## 📈 **Sample Data Results**
 
-## 🎨 **Database Design Excellence**
+The repo currently ships with 15 sample customers, 5 tailors, and 15 orders. Based on that sample data:
+
+| Metric | Value |
+|--------|-------|
+| **Total Revenue** | ₹30,420 |
+| **Completion Rate** | 60% (9 of 15 orders) |
+| **Avg Order Value** | ₹2,028 |
+| **Customers in sample data** | 15 |
+
+### **Observations from the Sample Data**
+- 🏆 **Best completion record**: Ahalya (tailor id 1001) — 3 orders, all completed
+- 💰 **Largest single order**: ₹7,800, dated September 2024
+- 📍 **Top location by revenue**: Marol (tied to that same ₹7,800 order)
+- ⚠️ **Overdue orders**: 6 PENDING orders past their deadline, ₹11,470 combined value at risk
+
+These are descriptive facts drawn from a 15-row sample dataset — not statistically meaningful trends, and there's no earlier baseline in the data to support a claim of "improvement" over time.
+
+---
+
+## 🎨 **Database Design**
 
 ### **Normalized OLTP Schema**
 ```
@@ -79,33 +84,43 @@ customer ──────┐
         order_status_log
 ```
 
-**Design Principles**: 3NF Normalization • Referential Integrity • Audit Trails
+**Design principles applied**: normalization, foreign key constraints, an audit trail table (`order_status_log`).
+
+**Known limitation**: `order_list.fid` is declared as a foreign key to `customer(cid)`, but some analytics queries also join it against `garment_type.fid` as if it referenced garment type. This only works in the sample data because both tables happen to use IDs 1–15 — it isn't a real or enforced relationship, and would break with real-world data. This should be fixed (e.g. split into two separate, properly named FK columns) before treating the schema as a reference design.
 
 ---
 
 ## 🛠️ **Technical Stack**
 
-| **Component** | **Technology** | **BI Application** |
-|---------------|----------------|-------------------|
-| **Data Storage** | MySQL 8.0 | Enterprise RDBMS |
-| **Schema Design** | Star | Dimensional modeling |
-| **Analytics Engine** | Advanced SQL | Complex query processing |
-| **Data Quality** | Constraints & Triggers | Data validation & integrity |
+| **Component** | **Technology** |
+|---------------|----------------|
+| **Data Storage** | MySQL 8.0 |
+| **OLTP Schema** | Normalized relational tables |
+| **Warehouse Schema** | Star schema (designed, not yet populated) |
+| **Analytics** | Standard SQL — joins, GROUP BY, CASE, aggregate functions |
 
 ---
 
-## 🚀 **Quick Start for Recruiters**
+## 🚀 **Quick Start**
 
 ```bash
-# Clone and setup
-git clone https://github.com/yourusername/tailoring-bi-system.git
-mysql -u root -p < setup/complete_schema.sql
+# Clone and set up
+git clone https://github.com/snowflakelogic/Tailoring-DMBS-And-Data-Warehouse.git
 
-# Run sample analytics
-mysql -u root -p tailor_dbms < analytics/business_intelligence.sql
+# Load the OLTP schema and sample data
+mysql -u root -p < schema/tailor_schema.sql
+mysql -u root -p tailor < data/sample_data.sql
+
+# (Optional) create the empty warehouse schema
+mysql -u root -p < schema/tailor_dw_schema.sql
+
+# Run the analytics queries
+mysql -u root -p tailor < analytics/business_intelligence.sql
 ```
 
-### **Sample BI Query Results**
+*(Adjust the paths above to match how the SQL files are actually organized in the repo. The database is `tailor` — `tailor_dbms`, referenced in an earlier draft of this README, doesn't exist in the schema.)*
+
+### **Sample Query Output**
 ```
 +----------+--------------+------------------+
 | month    | total_orders | monthly_revenue  |
@@ -117,37 +132,34 @@ mysql -u root -p tailor_dbms < analytics/business_intelligence.sql
 
 ---
 
-## 🎯 **Skills Demonstrated**
+## 🎯 **Concepts Covered**
 
-### **Data Analysis & BI**
-✅ **Dimensional Modeling** • Star Schema Design  
-✅ **Advanced SQL** • Window Functions, CTEs, Complex JOINs  
-✅ **Business Metrics** • KPI Development, Performance Tracking  
-✅ **Data Warehousing** • OLTP/OLAP Separation  
-
-### **Technical Proficiency**
-✅ **Database Design** • Normalization, Indexing, Constraints  
-✅ **Query Optimization** • Performance tuning, Execution plans  
-✅ **Data Integrity** • Audit trails, Business rules validation  
-✅ **Reporting Analytics** • Trend analysis, Risk management  
+- Relational schema design & normalization (customer, tailor, garment, order, payment tables)
+- Star schema / dimensional modeling for a future data warehouse
+- SQL aggregation, joins, and conditional (`CASE`) logic for KPI queries
+- Basic audit logging via `order_status_log`
 
 ---
 
-## 📊 **Portfolio Highlights**
+## 📊 **Project Contents**
 
-- **15 Tables** across operational DB + data warehouse
-- **50+ SQL Queries** showcasing analytical complexity  
-- **6 Dimension Tables** + 1 Fact Table (Star Schema)
-- **Real-time KPIs** with business intelligence insights
+- **8 OLTP tables** (customer, tailor, garment_type, measurements, order_list, payment, order_status_log, plus junction tables) and **7 warehouse tables** (1 fact + 6 dimensions, currently unpopulated)
+- **9 SQL analytics queries** across revenue, tailor performance, overdue orders, garment popularity, and customer analysis
+- **15 rows of sample data** per core table, for demonstration purposes only
+
+---
+
+## 📌 **Next Steps**
+
+- [ ] Write ETL scripts to populate `tailor_dw` from the OLTP tables
+- [ ] Point analytics queries at the star schema instead of raw OLTP tables
+- [ ] Fix the `order_list.fid` ambiguity (split into two proper FK columns)
+- [ ] Expand the sample dataset for more meaningful aggregate results
 
 ---
 
 <div align="center">
 
-### 💼 **Ready for Data Analyst & BI Analyst Roles**
-*Showcasing production-ready SQL skills, dimensional modeling expertise, and business intelligence acumen*
-
-
-⭐ **Star this repo to bookmark advanced SQL & BI techniques** ⭐
+⭐ **Star this repo if you find the schema design or queries useful** ⭐
 
 </div>
