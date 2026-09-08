@@ -27,10 +27,11 @@ dim_payment ---->   fact_orders   <---- dim_garment
                 (status_key,...)
 
 ```
-
-> A SQL project demonstrating relational (OLTP) database design for a small tailoring business, alongside a star-schema data warehouse design for analytical reporting.
-
-**Note:** the warehouse schema above (`fact_orders` and its dimension tables) is defined but not yet populated — there's no ETL script in this repo that loads data from the OLTP tables into it. The analytics queries currently run directly against the OLTP tables, not this star schema. Populating the warehouse and re-pointing the queries at it is a planned next step.
+A MySQL project for managing a small tailoring business using a relational OLTP database and a designed data-warehouse layer. Includes customer, tailor, garment, measurement, order, payment, and order-status data, along with SQL analytics for revenue, tailor performance, customer spending, order status, and overdue orders.
+ 
+Demonstrates relational schema design, primary/foreign keys, joins, aggregation, conditional metrics, date conversion, and dimensional modeling.
+ 
+> **Project status:** The OLTP database, sample data, analytics queries, and warehouse table design are implemented. The supplied SQL does **not** include an ETL process that loads the warehouse, or analytics queries that run against the warehouse.
 
 ---
 
@@ -62,8 +63,6 @@ The repo currently ships with 15 sample customers, 5 tailors, and 15 orders. Bas
 - 💰 **Largest single order**: ₹7,800, dated September 2024
 - 📍 **Top location by revenue**: Marol (tied to that same ₹7,800 order)
 - ⚠️ **Overdue orders**: 6 PENDING orders past their deadline, ₹11,470 combined value at risk
-
-These are descriptive facts drawn from a 15-row sample dataset — not statistically meaningful trends, and there's no earlier baseline in the data to support a claim of "improvement" over time.
 
 ---
 
