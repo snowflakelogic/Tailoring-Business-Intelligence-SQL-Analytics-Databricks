@@ -1,4 +1,4 @@
-# 🧵 Tailoring Business — DBMS & Data Warehouse Project
+# 🧵Tailoring Business Management — SQL & Data Warehouse
 
 A MySQL project combining a **relational OLTP database** with a **star-schema data warehouse design** for a small tailoring business. The project covers customer management, measurements, garments, orders, payments, tailor assignments, status tracking, and SQL-based business analysis.
 
