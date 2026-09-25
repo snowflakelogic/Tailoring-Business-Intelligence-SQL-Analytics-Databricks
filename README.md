@@ -35,6 +35,7 @@ The project modernizes the source data into a **Databricks Medallion Architectur
 ## 🥇 Gold Layer
 
 ![Gold Layer Tables](Databricks/files/screenshots/Gold-layer-tables.png)t-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Gold-layer-tables.png))
+
 ---
 
 ## 🏗️ Architecture
