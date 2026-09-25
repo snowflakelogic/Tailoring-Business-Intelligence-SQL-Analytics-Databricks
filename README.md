@@ -18,7 +18,7 @@ The project modernizes the source data into a **Databricks Medallion Architectur
 
 ### Data Pipeline
 
-**Source / MySQL → Bronze → Silver → Gold → Analytics**
+**Data Creation → Bronze → Silver → Gold → Analytics**
 
 ---
 
@@ -57,3 +57,19 @@ The project modernizes the source data into a **Databricks Medallion Architectur
                          ▼
                 Databricks SQL
                     Analytics
+
+## ⭐ Databricks Lakehouse Catalog
+
+![Tailoring Data Lakehouse]([screenshots/Tailoring-Data-Lakehouse.png](https://github.com/snowflakelogic/Tailoring-Business-Management-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Tailoring-Data-Lakehouse.png))
+
+## 🥉 Bronze Layer
+
+![Bronze Layer Tables]([screenshots/Bronze-layer-tables.png](https://github.com/snowflakelogic/Tailoring-Business-Management-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Bronze-layer-tables.png))
+
+## 🥈 Silver Layer
+
+![Silver Layer Tables]([screenshots/Silver-layer-tables.png](https://github.com/snowflakelogic/Tailoring-Business-Management-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Silver-layer-tables.png))
+
+## 🥇 Gold Layer
+
+![Gold Layer Tables]([screenshots/Gold-layer-tables.png](https://github.com/snowflakelogic/Tailoring-Business-Management-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Gold-layer-tables.png))
