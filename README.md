@@ -20,6 +20,21 @@ The project modernizes the source data into a **Databricks Medallion Architectur
 
 **Data Creation → Bronze → Silver → Gold → Analytics**
 
+## ⭐ Databricks Lakehouse Catalog
+
+![Tailoring Data Lakehouse](Databricks/files/screenshots/Tailoring-Data-Lakehouse.png)
+
+## 🥉 Bronze Layer
+
+![Bronze Layer Tables](Databricks/files/screenshots/Bronze-layer-tables.png)
+
+## 🥈 Silver Layer
+
+![Silver Layer Tables](Databricks/files/screenshots/Silver-layer-tables.png)
+
+## 🥇 Gold Layer
+
+![Gold Layer Tables](Databricks/files/screenshots/Gold-layer-tables.png)t-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Gold-layer-tables.png))
 ---
 
 ## 🏗️ Architecture
@@ -58,18 +73,3 @@ The project modernizes the source data into a **Databricks Medallion Architectur
                 Databricks SQL
                     Analytics
 
-## ⭐ Databricks Lakehouse Catalog
-
-![Tailoring Data Lakehouse](Databricks/files/screenshots/Tailoring-Data-Lakehouse.png)
-
-## 🥉 Bronze Layer
-
-![Bronze Layer Tables](Databricks/files/screenshots/Bronze-layer-tables.png)
-
-## 🥈 Silver Layer
-
-![Silver Layer Tables](Databricks/files/screenshots/Silver-layer-tables.png)
-
-## 🥇 Gold Layer
-
-![Gold Layer Tables](Databricks/files/screenshots/Gold-layer-tables.png)t-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Gold-layer-tables.png))
