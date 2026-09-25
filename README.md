@@ -1,4 +1,4 @@
-# Tailoring Business Intelligence  & SQL Analytics using Databricks — Databricks
+# Tailoring Business Intelligence  & SQL Analytics — Databricks
 
 ## 📌 Project Overview
 
