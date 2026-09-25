@@ -60,16 +60,16 @@ The project modernizes the source data into a **Databricks Medallion Architectur
 
 ## ⭐ Databricks Lakehouse Catalog
 
-![Tailoring Data Lakehouse]([screenshots/Tailoring-Data-Lakehouse.png](https://github.com/snowflakelogic/Tailoring-Business-Management-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Tailoring-Data-Lakehouse.png))
+![Tailoring Data Lakehouse](Databricks/files/screenshots/Tailoring-Data-Lakehouse.png)
 
 ## 🥉 Bronze Layer
 
-![Bronze Layer Tables]([screenshots/Bronze-layer-tables.png](https://github.com/snowflakelogic/Tailoring-Business-Management-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Bronze-layer-tables.png))
+![Bronze Layer Tables](Databricks/files/screenshots/Bronze-layer-tables.png)
 
 ## 🥈 Silver Layer
 
-![Silver Layer Tables]([screenshots/Silver-layer-tables.png](https://github.com/snowflakelogic/Tailoring-Business-Management-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Silver-layer-tables.png))
+![Silver Layer Tables](Databricks/files/screenshots/Silver-layer-tables.png)
 
 ## 🥇 Gold Layer
 
-![Gold Layer Tables]([screenshots/Gold-layer-tables.png](https://github.com/snowflakelogic/Tailoring-Business-Management-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Gold-layer-tables.png))
+![Gold Layer Tables](Databricks/files/screenshots/Gold-layer-tables.png)t-SQL-Data-Warehouse/blob/main/Databricks/files/screenshots/Gold-layer-tables.png))
